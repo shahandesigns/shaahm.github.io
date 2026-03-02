@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Concept Art - Shahan Ahmed Design Portfolio</title>
+    <style>
+        @font-face {
+            font-family: 'Qaranta';
+            src: url('https://fonts.cdnfonts.com/s/93849/Qaranta.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        :root {
+            color-scheme: light;
+            --color-bg: #fafaf8;
+            --color-text: #1a1a1a;
+            --color-accent: #2d2d2d;
+            --color-subtle: #858585;
+            --color-border: #e0e0dc;
+            --font-display: 'Playfair Display', serif;
+            --font-logo: 'Qaranta', serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg: #fafaf8;
+                --color-text: #1a1a1a;
+                --color-accent: #2d2d2d;
+                --color-subtle: #858585;
+                --color-border: #e0e0dc;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: var(--font-logo);
+            font-size: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            color: var(--color-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown menu */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            padding: 1rem 0;
+            margin-top: 1rem;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 45, 45, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .dropdown a:hover::before {
+            left: 100%;
+        }
+
+        .dropdown a:hover {
+            background: rgba(224, 224, 220, 0.3);
+            color: var(--color-accent);
+        }
+
+        .dropdown a::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 1.5px;
+            height: 1.5px;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 0.875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-subtle);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Concept Art Grid */
+        .concept-art {
+            padding: 6rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .art-card {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .art-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .art-card:nth-child(1) { animation-delay: 0.1s; }
+        .art-card:nth-child(2) { animation-delay: 0.2s; }
+        .art-card:nth-child(3) { animation-delay: 0.3s; }
+        .art-card:nth-child(4) { animation-delay: 0.4s; }
+        .art-card:nth-child(5) { animation-delay: 0.5s; }
+        .art-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .art-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--color-border);
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .art-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .art-card:hover .art-image img {
+            transform: scale(1.08);
+        }
+
+        .art-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .art-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .art-year {
+            font-size: 0.75rem;
+            color: var(--color-subtle);
+            letter-spacing: 0.1em;
+        }
+
+        .art-description {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: var(--color-subtle);
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .image-gallery:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .gallery-image.active {
+            opacity: 1;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0.5rem;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-btn {
+            background: rgba(250, 250, 248, 0.85);
+            border: 1px solid rgba(224, 224, 220, 0.6);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .gallery-btn:hover {
+            background: rgba(250, 250, 248, 1);
+            border-color: var(--color-border);
+            transform: scale(1.1);
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(250, 250, 248, 0.5);
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--color-bg);
+            transform: scale(1.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 3rem;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-subtle);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem 4rem;
+            }
+
+            .art-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .concept-art {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="portfolio.html" class="logo">Shahan Ahmed</a>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="portfolio.html#work">Work</a>
+                <div class="dropdown">
+                    <a href="portfolio.html#work">Featured</a>
+                    <a href="film.html">Film</a>
+                    <a href="concept-art.html">Concept Art</a>
+                    <a href="logo-design.html">Logo Design</a>
+                </div>
+            </li>
+            <li><a href="portfolio.html#about">About</a></li>
+            <li><a href="portfolio.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Particle Background -->
+        <div class="particles" id="particles"></div>
+        
+        <div class="hero-content">
+            <h1>Concept Art</h1>
+            <p class="hero-subtitle">Visual Exploration & Design</p>
+        </div>
+    </section>
+
+    <!-- Concept Art Section -->
+    <section class="concept-art">
+        <div class="art-grid">
+            <div class="art-card">
+                <div class="art-image">
+                    <div class="image-gallery" id="concept1Gallery">
+                        <img src="concept-1-1.png" alt="Chrome P-51 Mustang - Front View" class="gallery-image active">
+                        <img src="concept-1-2.png" alt="Chrome P-51 Mustang - Detail" class="gallery-image">
+                        
+                        <div class="gallery-nav">
+                            <button class="gallery-btn prev" onclick="changeImage('concept1Gallery', -1)">‹</button>
+                            <button class="gallery-btn next" onclick="changeImage('concept1Gallery', 1)">›</button>
+                        </div>
+                        
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="setImage('concept1Gallery', 0)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept1Gallery', 1)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Chrome Reflections</h3>
+                    <span class="art-year">2024</span>
+                </div>
+                <p class="art-description">Photorealistic exploration of metallic surfaces and atmospheric reflections through P-51 Mustang imagery.</p>
+            </div>
+
+            <div class="art-card">
+                <div class="art-image">
+                    <div class="image-gallery" id="concept2Gallery">
+                        <img src="concept-2-1.png" alt="Geometric Forms - 1" class="gallery-image active">
+                        <img src="concept-2-2.png" alt="Geometric Forms - 2" class="gallery-image">
+                        <img src="concept-2-3.png" alt="Geometric Forms - 3" class="gallery-image">
+                        
+                        <div class="gallery-nav">
+                            <button class="gallery-btn prev" onclick="changeImage('concept2Gallery', -1)">‹</button>
+                            <button class="gallery-btn next" onclick="changeImage('concept2Gallery', 1)">›</button>
+                        </div>
+                        
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="setImage('concept2Gallery', 0)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept2Gallery', 1)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept2Gallery', 2)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Geometric Forms</h3>
+                    <span class="art-year">2024</span>
+                </div>
+                <p class="art-description">Abstract exploration of light, reflection, and color through crystalline geometric shapes.</p>
+            </div>
+
+            <div class="art-card">
+                <div class="art-image">
+                    <div class="image-gallery" id="concept3Gallery">
+                        <img src="concept-3-1.png" alt="Urban Horizons - 1" class="gallery-image active">
+                        <img src="concept-3-2.png" alt="Urban Horizons - 2" class="gallery-image">
+                        <img src="concept-3-3.png" alt="Urban Horizons - 3" class="gallery-image">
+                        <img src="concept-3-4.png" alt="Urban Horizons - 4" class="gallery-image">
+                        
+                        <div class="gallery-nav">
+                            <button class="gallery-btn prev" onclick="changeImage('concept3Gallery', -1)">‹</button>
+                            <button class="gallery-btn next" onclick="changeImage('concept3Gallery', 1)">›</button>
+                        </div>
+                        
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="setImage('concept3Gallery', 0)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept3Gallery', 1)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept3Gallery', 2)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept3Gallery', 3)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Urban Horizons</h3>
+                    <span class="art-year">2024</span>
+                </div>
+                <p class="art-description">Minimalist cityscape series exploring clean architectural lines and reflective surfaces.</p>
+            </div>
+
+            <div class="art-card">
+                <div class="art-image">
+                    <div class="image-gallery" id="concept4Gallery">
+                        <img src="blender-1.png" alt="Blender 3D - 1" class="gallery-image active">
+                        <img src="blender-2.png" alt="Blender 3D - 2" class="gallery-image">
+                        <img src="blender-3.png" alt="Blender 3D - 3" class="gallery-image">
+                        
+                        <div class="gallery-nav">
+                            <button class="gallery-btn prev" onclick="changeImage('concept4Gallery', -1)">‹</button>
+                            <button class="gallery-btn next" onclick="changeImage('concept4Gallery', 1)">›</button>
+                        </div>
+                        
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" onclick="setImage('concept4Gallery', 0)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept4Gallery', 1)"></span>
+                            <span class="gallery-dot" onclick="setImage('concept4Gallery', 2)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">3D Renders</h3>
+                    <span class="art-year">2024</span>
+                </div>
+                <p class="art-description">Blender 3D explorations featuring automotive branding and logo design with photorealistic materials and lighting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Image Gallery Functions
+        const galleries = {};
+
+        function initGallery(galleryId) {
+            galleries[galleryId] = {
+                currentIndex: 0,
+                images: document.querySelectorAll(`#${galleryId} .gallery-image`),
+                dots: document.querySelectorAll(`#${galleryId} .gallery-dots .gallery-dot`)
+            };
+        }
+
+        function changeImage(galleryId, direction) {
+            if (!galleries[galleryId]) initGallery(galleryId);
+            
+            const gallery = galleries[galleryId];
+            const totalImages = gallery.images.length;
+            
+            gallery.currentIndex = (gallery.currentIndex + direction + totalImages) % totalImages;
+            updateGallery(galleryId);
+        }
+
+        function setImage(galleryId, index) {
+            if (!galleries[galleryId]) initGallery(galleryId);
+            
+            galleries[galleryId].currentIndex = index;
+            updateGallery(galleryId);
+        }
+
+        function updateGallery(galleryId) {
+            const gallery = galleries[galleryId];
+            
+            // Update images
+            gallery.images.forEach((img, index) => {
+                img.classList.toggle('active', index === gallery.currentIndex);
+            });
+            
+            // Update dots
+            gallery.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === gallery.currentIndex);
+            });
+        }
+
+        // Initialize galleries on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initGallery('concept1Gallery');
+            initGallery('concept2Gallery');
+            initGallery('concept3Gallery');
+            initGallery('concept4Gallery');
+        });
+
+        // Galaxy spiral particle system with 400 particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 400;
+        const particles = [];
+
+        class Particle {
+            constructor(index) {
+                this.element = document.createElement('div');
+                this.element.className = 'particle';
+                this.index = index;
+                this.reset();
+                particlesContainer.appendChild(this.element);
+            }
+
+            reset() {
+                const hero = document.querySelector('.hero');
+                const heroWidth = hero.offsetWidth;
+                const heroHeight = hero.offsetHeight;
+                
+                // Assign particle to one of the spiral arms
+                const numArms = 4;
+                const armIndex = Math.floor(Math.random() * numArms);
+                const armAngleOffset = (armIndex / numArms) * Math.PI * 2;
+                
+                // Start particles near center and expand outward
+                const radiusRandom = Math.random() * 0.15; // Start very near core
+                this.radius = radiusRandom * Math.min(heroWidth, heroHeight) * 0.45;
+                this.targetRadius = (0.2 + Math.random() * 0.75) * Math.min(heroWidth, heroHeight) * 0.45;
+                this.radiusGrowth = (this.targetRadius - this.radius) / 1600; // Much slower expansion: doubled from 800 to 1600
+                
+                // More consistent spiral angle calculation
+                const spiralFactor = 6; // Tighter, more consistent spiral
+                const normalizedRadius = this.radius / (Math.min(heroWidth, heroHeight) * 0.45);
+                const spiralAngle = normalizedRadius * Math.PI * spiralFactor;
+                
+                // Much less random spread for tighter arms
+                const randomSpread = (Math.random() - 0.5) * 0.2; // Reduced from 0.5 to 0.2
+                this.baseAngle = armAngleOffset + spiralAngle + randomSpread;
+                this.angle = this.baseAngle;
+                
+                // Store arm index for consistent spiral calculation
+                this.armIndex = armIndex;
+                this.spiralFactor = spiralFactor;
+                
+                // 3D depth position (Z-axis) for side view
+                this.zDepth = (Math.random() - 0.5) * 2; // -1 to 1, front to back
+                
+                // Wave motion synchronized - much slower
+                this.waveOffset = normalizedRadius * Math.PI * 2;
+                this.waveSpeed = 0.0015; // Reduced from 0.003
+                this.waveAmplitude = 8 + Math.random() * 5;
+                
+                // Consistent orbit speed for all particles - much slower
+                this.orbitSpeed = 0.0001; // Reduced from 0.0002
+                
+                // Reduced arm offset for tighter, more defined arms
+                this.armOffset = (Math.random() - 0.5) * 12;
+                
+                // Vary particle size based on depth (closer = larger)
+                const depthScale = 0.7 + (this.zDepth + 1) * 0.3; // 0.7 to 1.3
+                const sizeRandom = Math.random();
+                let baseSize;
+                if (sizeRandom < 0.7) {
+                    baseSize = 0.8;
+                } else if (sizeRandom < 0.9) {
+                    baseSize = 1.2;
+                } else {
+                    baseSize = 1.8;
+                }
+                this.size = baseSize * depthScale;
+                this.element.style.width = this.size + 'px';
+                this.element.style.height = this.size + 'px';
+                
+                // Center position
+                this.centerX = heroWidth / 2;
+                this.centerY = heroHeight / 2;
+                
+                // Lifetime for fade in/out cycle - much longer for slower movement
+                this.lifetime = 0;
+                this.maxLifetime = 1400 + Math.random() * 1000; // Doubled from 700-1200 to 1400-2400
+                this.fadeInDuration = 150; // Increased from 80
+                this.fadeOutStart = this.maxLifetime - 300; // Increased from 150
+                
+                // Sparkle properties - much slower
+                this.sparkleSpeed = Math.random() * 0.003 + 0.0015; // Halved from 0.006 + 0.003
+                this.sparkleOffset = Math.random() * Math.PI * 2;
+                
+                // Opacity based on distance and depth
+                const depthOpacity = 0.4 + (this.zDepth + 1) * 0.3; // Closer = brighter
+                this.baseOpacity = (Math.random() * 0.4 + 0.5) * depthOpacity;
+                this.sparkleIntensity = Math.random() * 0.3 + 0.2;
+                
+                // Initial blue color palette with depth-based brightness
+                const depthBrightness = 0.7 + (this.zDepth + 1) * 0.3;
+                const r = Math.floor((Math.random() * 100 + 50) * depthBrightness);
+                const g = Math.floor((Math.random() * 130 + 120) * depthBrightness);
+                const b = Math.floor((Math.random() * 80 + 180) * depthBrightness);
+                this.baseColor = { r, g, b };
+                this.element.style.background = `rgb(${r}, ${g}, ${b})`;
+                
+                this.updatePosition(0);
+            }
+
+            updatePosition(time) {
+                // Recalculate spiral angle based on current radius for consistent spiral shape
+                const maxRadius = Math.min(window.innerWidth, window.innerHeight) * 0.45;
+                const normalizedRadius = this.radius / maxRadius;
+                const spiralAngle = normalizedRadius * Math.PI * this.spiralFactor;
+                
+                // Maintain consistent position on spiral arm
+                const armAngleOffset = (this.armIndex / 4) * Math.PI * 2;
+                this.angle = armAngleOffset + spiralAngle + this.orbitSpeed * this.lifetime;
+                
+                // Add wave motion to the spiral (reduced for consistency)
+                const waveEffect = Math.sin(time * this.waveSpeed + this.waveOffset) * this.waveAmplitude;
+                const effectiveRadius = this.radius + waveEffect;
+                
+                // 3D perspective transformation - viewing from 45-degree angle
+                const tiltAngle = Math.PI / 5; // 36 degrees tilt
+                
+                // Calculate 3D position
+                const x3d = Math.cos(this.angle) * effectiveRadius;
+                const y3d = Math.sin(this.angle) * effectiveRadius;
+                const z3d = this.zDepth * effectiveRadius * 0.5; // Depth based on position
+                
+                // Project to 2D with perspective (side view)
+                const perspectiveFactor = 1 / (1 + z3d / 1000); // Perspective depth
+                const x2d = x3d;
+                const y2d = y3d * Math.cos(tiltAngle) - z3d * Math.sin(tiltAngle);
+                
+                // Apply to screen coordinates with arm offset
+                const x = this.centerX + x2d + Math.cos(this.angle + Math.PI / 2) * this.armOffset;
+                const y = this.centerY + y2d * perspectiveFactor + Math.sin(this.angle + Math.PI / 2) * this.armOffset * Math.cos(tiltAngle);
+                
+                this.element.style.left = x + 'px';
+                this.element.style.top = y + 'px';
+            }
+
+            update(time, mouseX, mouseY) {
+                // Increment lifetime
+                this.lifetime++;
+                
+                // Regenerate particle if lifetime exceeded
+                if (this.lifetime > this.maxLifetime) {
+                    this.reset();
+                    return;
+                }
+                
+                // Expand radius over time (particles move outward)
+                if (this.radius < this.targetRadius) {
+                    this.radius += this.radiusGrowth;
+                    // Update wave offset as radius changes
+                    this.waveOffset = (this.radius / (Math.min(window.innerWidth, window.innerHeight) * 0.45)) * Math.PI * 2;
+                }
+                
+                // Calculate fade in/out
+                let lifetimeFadeFactor = 1;
+                if (this.lifetime < this.fadeInDuration) {
+                    // Fade in
+                    lifetimeFadeFactor = this.lifetime / this.fadeInDuration;
+                } else if (this.lifetime > this.fadeOutStart) {
+                    // Fade out
+                    const fadeOutProgress = (this.lifetime - this.fadeOutStart) / (this.maxLifetime - this.fadeOutStart);
+                    lifetimeFadeFactor = 1 - fadeOutProgress;
+                }
+                
+                // Rotate around center (entire galaxy rotates)
+                this.angle += this.orbitSpeed;
+                
+                // Sparkle effect
+                const sparkle = (Math.sin(time * this.sparkleSpeed + this.sparkleOffset) + 1) / 2;
+                const currentOpacity = (this.baseOpacity + (sparkle * this.sparkleIntensity)) * lifetimeFadeFactor;
+                
+                // Calculate current position for mouse interaction
+                const waveEffect = Math.sin(time * this.waveSpeed + this.waveOffset) * this.waveAmplitude;
+                const effectiveRadius = this.radius + waveEffect;
+                const currentX = this.centerX + (Math.cos(this.angle) * effectiveRadius);
+                const currentY = this.centerY + (Math.sin(this.angle) * effectiveRadius);
+                
+                const dx = mouseX - currentX;
+                const dy = mouseY - currentY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Rainbow color shift near cursor
+                if (distance < 300) {
+                    const angleToMouse = Math.atan2(dy, dx);
+                    const normalizedDistance = Math.min(distance / 300, 1);
+                    
+                    const r = Math.floor(Math.abs(Math.cos(angleToMouse) * 150 * (1 - normalizedDistance)) + this.baseColor.r * normalizedDistance);
+                    const g = Math.floor(Math.abs(Math.sin(angleToMouse + Math.PI / 3) * 150 * (1 - normalizedDistance)) + this.baseColor.g * normalizedDistance);
+                    const b = Math.floor(Math.abs(Math.sin(angleToMouse) * 100 * (1 - normalizedDistance)) + this.baseColor.b * normalizedDistance);
+                    
+                    this.element.style.background = `rgb(${r}, ${g}, ${b})`;
+                } else {
+                    // Return to base blue color
+                    this.element.style.background = `rgb(${this.baseColor.r}, ${this.baseColor.g}, ${this.baseColor.b})`;
+                }
+                
+                // Mouse repulsion
+                if (distance < 200 && distance > 0) {
+                    const force = (200 - distance) / 200;
+                    const repulsionAngle = force * 0.001;
+                    this.angle -= (dx / distance) * repulsionAngle;
+                }
+                
+                this.element.style.opacity = currentOpacity;
+                this.updatePosition(time);
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle(i));
+        }
+
+        let mouseX = -1000;
+        let mouseY = -1000;
+        let lastMouseMove = Date.now();
+        let particlesActive = true;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            lastMouseMove = Date.now();
+            
+            if (!particlesActive) {
+                particlesActive = true;
+                particles.forEach(particle => {
+                    particle.element.style.transition = '';
+                });
+            }
+        });
+
+        setInterval(() => {
+            const timeSinceMove = Date.now() - lastMouseMove;
+            if (timeSinceMove > 3000 && particlesActive) {
+                particlesActive = false;
+                particles.forEach(particle => {
+                    particle.element.style.transition = 'opacity 2s ease-out';
+                    particle.element.style.opacity = '0';
+                });
+            }
+        }, 100);
+
+        let time = 0;
+        function animate() {
+            time++;
+            particles.forEach(particle => {
+                particle.update(time, mouseX, mouseY);
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            particles.forEach((particle, index) => {
+                particle.index = index;
+                particle.reset();
+            });
+        });
+    </script>
+</body>
+</html>
