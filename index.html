@@ -206,9 +206,10 @@
 
         .particle {
             position: absolute;
-            width: 2.5px;
-            height: 2.5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
+            opacity: 1;
         }
 
         .hero-content {
@@ -1076,13 +1077,13 @@
             <div class="project-screens-showcase">
                 <div class="screens-track-showcase">
                     <div class="phone-mockup-showcase"><img src="terra-1.png" alt="Terra Virtuale - Bookshelf"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Dope Reads"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-virtuale-3.png" alt="Terra Virtuale - Edit Bookshelf"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Book Detail"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Edit Bookshelf"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Dope Reads"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-4.png" alt="Terra Virtuale - Book Detail"></div>
                     <div class="phone-mockup-showcase"><img src="terra-1.png" alt="Terra Virtuale - Bookshelf"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Dope Reads"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-virtuale-3.png" alt="Terra Virtuale - Edit Bookshelf"></div>
-                    <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Book Detail"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Edit Bookshelf"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Dope Reads"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-4.png" alt="Terra Virtuale - Book Detail"></div>
                 </div>
             </div>
         </div>
@@ -1241,14 +1242,14 @@
             console.log('Particles container found, initializing...');
         }
         
-        const particleCount = 300;
+        const particleCount = 500;
         const particles = [];
 
         class Particle {
             constructor(index) {
                 this.element = document.createElement('div');
                 this.element.className = 'particle';
-                this.element.style.background = 'rgba(100, 150, 230, 0.8)'; // Fallback color
+                this.element.style.background = 'rgba(100, 180, 255, 0.9)'; // Fallback color - bright blue
                 this.index = index;
                 this.reset();
                 particlesContainer.appendChild(this.element);
@@ -1284,7 +1285,7 @@
                 // Sparkle properties - very slow
                 this.sparkleSpeed = Math.random() * 0.008 + 0.005;
                 this.sparkleOffset = Math.random() * Math.PI * 2;
-                this.baseOpacity = Math.random() * 0.2 + 0.5;
+                this.baseOpacity = Math.random() * 0.3 + 0.7;
                 this.sparkleIntensity = Math.random() * 0.3 + 0.3;
                 
                 // Random shades of blue - brighter
