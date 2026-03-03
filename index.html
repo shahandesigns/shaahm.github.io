@@ -763,6 +763,43 @@
             z-index: 10;
         }
 
+        .contact-info-section {
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-subtle);
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--font-mono);
+        }
+
+        .contact-link:hover {
+            color: var(--color-accent);
+        }
+
         .contact-form {
             margin-top: 3rem;
         }
@@ -1077,9 +1114,11 @@
                 <div class="screens-track-showcase">
                     <div class="phone-mockup-showcase"><img src="terra-1.png" alt="Terra Virtuale - Bookshelf"></div>
                     <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Dope Reads"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-virtuale-3.png" alt="Terra Virtuale - Edit Bookshelf"></div>
                     <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Book Detail"></div>
                     <div class="phone-mockup-showcase"><img src="terra-1.png" alt="Terra Virtuale - Bookshelf"></div>
                     <div class="phone-mockup-showcase"><img src="terra-2.png" alt="Terra Virtuale - Dope Reads"></div>
+                    <div class="phone-mockup-showcase"><img src="terra-virtuale-3.png" alt="Terra Virtuale - Edit Bookshelf"></div>
                     <div class="phone-mockup-showcase"><img src="terra-3.png" alt="Terra Virtuale - Book Detail"></div>
                 </div>
             </div>
@@ -1153,12 +1192,26 @@
             <p>Hello! I'm an aspiring product designer passionate about creating meaningful experiences that solve real problems with a human centered design philosophy.</p>
             <p>With a Masters in Product Design and Development from Northwestern's McCormick School of Engineering, I have worked on a range of intriguing projects. From conducting user research with key stakeholder interviews, creating customer journey maps, ideating concepts, and designing innovative solutions, I look for a deep understanding for why we are building on a great idea that is clearly informed by consumer needs.</p>
             <p>I enjoy working with multidisciplinary teams as this provides a great opportunity to learn and grow from different perspectives. I have worked with startups and established companies to design products that are both beautiful and functional. My approach combines user research, strategic thinking, and meticulous attention to aesthetic detail.</p>
-            <p>When I'm not designing, you'll find me exploring nature in different countries, designing conceptual art, or even making cinematic films.</p>
+            <p>When I'm not designing, you'll find me exploring nature in different countries, designing conceptual art, or even making cinematic films. I look forward to working with you!</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
+        <div class="contact-info-section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="/cdn-cgi/l/email-protection#dfacb7bebeb7b2edef9fb8b2beb6b3f1bcb0b2" class="contact-link"><span class="__cf_email__" data-cfemail="3e4d565f5f56530c0e7e59535f5752105d5153">[email&#160;protected]</span></a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+18478142509" class="contact-link">847-814-2509</a>
+                </div>
+            </div>
+        </div>
+
         <h2 class="section-title">Get in Touch</h2>
         <form class="contact-form">
             <div class="form-group">
@@ -1182,7 +1235,7 @@
         <p>&copy; 2026 All Rights Reserved</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Image Gallery Functions
         const galleries = {};
 
@@ -1441,14 +1494,4 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section-title').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+                    e
